@@ -1,3 +1,7 @@
+body {
+  background-image: url(../img/tablecloth.jpg);
+}
+
 li {
   background: #FAEBD7;
   margin: 5px;
