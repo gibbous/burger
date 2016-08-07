@@ -1,8 +1,8 @@
 /*
 Here is where you create all the functions that will do the routing for your app, and the logic of each route.
 */
-var method-override = require('method-override');
-var body-parser = require('body-parser');
+var methodoverride = require('method-override');
+var bodyparser = require('body-parser');
 var express = require('express');
 var router = express.Router();
 var burger = require('../models/burger.js');
