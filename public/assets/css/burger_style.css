@@ -21,7 +21,6 @@ p {
   text-shadow: black 1px 1px 2px;
   background: #FFF275;
   border-radius: 25px;
-  border: 2px solid #FF8C42; 
   background-image: url(../img/burgerbanner.jpg);
   background-position: 0% 25%;
   background-size: cover;
@@ -32,7 +31,20 @@ p {
   background: #FFF275;
   border-radius: 25px;
   border: 2px solid #FF8C42; 
+  padding-bottom: 10px;
 }
+.menu-burger {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 25px;
+  border: 2px solid #FF8C42; 
+  padding: 10px;
+}
+.burger {
+  padding: 10px;
+  font-size: 16pt;
+  border-bottom: 2px solid rgba(255, 140, 66, 0.3);
+}
+
 .label {
   font-weight: bold;
 }

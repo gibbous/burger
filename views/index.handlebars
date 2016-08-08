@@ -1,7 +1,7 @@
  <div class="container">
       <div class="row">
         <div class="jumbotron">
-          <h1>Burger Munch</h1>
+          <h1>Burger Muncher</h1>
             <p>Dream it. Post it. Eat it.</p>
         </div>
       </div>
@@ -12,18 +12,17 @@
     <div class="col-sm-4 col-md-4 col-lg-4">
       <h3 class="text-success">Burger Menu</h3>
 
-      <div class="burger">
+      <div class="menu-burger">
         {{#each burgers}}
           {{#unless this.devoured}}
-            <div>
+            <div class="burger">
               {{this.burger_name}}
 
               <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
                 <input type="hidden" name="devoured" value="true">
-                <button type="submit">omnomnom</button>
+                <button class="btn btn-danger" type="submit">omnomnom</button>
               </form>
 
-             
             </div>
           {{/unless}}
         {{/each}}
@@ -33,7 +32,7 @@
     <div class="col-sm-4 col-md-4 col-lg-4">
       <h2>Add a Burger</h2>
         <div>
-        <img src="/public/assets/img/burger.png" alt="happy-burger">
+        <img src="/assets/img/burger.png" alt="happy-burger" width=166px>
         </div>
           <form class="create-update-form" action="burgers/create" method="POST">
 
@@ -46,25 +45,23 @@
               <input type="hidden" name="devoured" value="0"> 
             </div>
 
-            <button class="btn" type="submit">Add Burger</button>
+            <button class="btn btn-warning" type="submit">Add Burger</button>
           </form>
     </div>
 
     <div class="col-sm-4 col-md-4 col-lg-4">
       <h3 class="text-success">Recently Devoured</h3>
 
-        <div class="burger">
+        <div class="menu-burger">
           {{#each burgers}}
             {{#if this.devoured}}
-              <div>
+              <div class="burger">
                 {{this.burger_name}}
 
                 <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
                   <input type="hidden" name="devoured" value="false">
-                  <button type="submit">Make Again!</button>
+                  <button class="btn btn-success" type="submit">Make Again!</button>
                 </form>
-
-                 
 
               </div>
             {{/if}}
