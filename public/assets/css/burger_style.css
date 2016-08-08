@@ -1,19 +1,44 @@
 body {
   background-image: url(../img/tablecloth.jpg);
+  text-align: center;
 }
 
 li {
-  background: #FAEBD7;
+  background: #c38988;
   margin: 5px;
   padding: 5px;
 }
 
+p {
+  color: #7ef436;
+}
+.jumbotron {
+
+  margin-bottom: 10px;
+  
+  color: #def436;
+  font-family: 'Chewy', cursive;
+  text-shadow: black 1px 1px 2px;
+  background: #FFF275;
+  border-radius: 25px;
+  border: 2px solid #FF8C42; 
+  background-image: url(../img/burgerbanner.jpg);
+  background-position: 0% 25%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.menu-panel {
+  background: #FFF275;
+  border-radius: 25px;
+  border: 2px solid #FF8C42; 
+}
 .label {
   font-weight: bold;
 }
 
 .create-update-form {
-  background: aqua;
+  text-align: center;
   margin: 5px;
   padding: 5px;
 }
