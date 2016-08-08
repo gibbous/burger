@@ -10,6 +10,6 @@ As burgers are nommed, they are moved to the Recently Devoured menu on the right
 
 This project makes me hungry.
 
-![https://burgermuncher.herokuapp.com/burgers](https://burgermuncher.herokuapp.com/burgers)
+[https://burgermuncher.herokuapp.com/burgers](https://burgermuncher.herokuapp.com/burgers)
 
 ![burger burgermenu.png](burgermenu.png)
