@@ -45,7 +45,7 @@
               <input type="hidden" name="devoured" value="0"> 
             </div>
 
-            <button class="btn btn-warning" type="submit">Add Burger</button>
+            <button id="add" class="btn btn-warning" type="submit">Add Burger</button>
           </form>
     </div>
 
@@ -73,6 +73,29 @@
 </div>
 
 
+<!--Modal for login screen  -->
+        <div id="loginModal" class="modal fade">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Login</h4>
+                    </div>
+                    <div class="modal-body"><h2>Login</h2>
+                    <button>Login with GitHub</button> 
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-dismiss="modal"
+                        type="button">Close</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
 
-
+<script>
+$("#add").on("click", function(){
+$("#loginModal").modal('toggle');
+return false;
+});
+</script>

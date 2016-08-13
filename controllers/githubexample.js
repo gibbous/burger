@@ -1,22 +1,17 @@
-/*
-Here is where you create all the functions that will do the routing for your app, and the logic of each route.
-*/
-var methodOverride = require('method-override');
-var bodyParser = require('body-parser');
 var express = require('express');
-var router = express.Router();
-var burger = require('../models/burger.js');
-
-//Passport Authentication Setup
 var passport = require('passport');
 var util = require('util');
 var session = require('express-session');
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
 var GitHubStrategy = require('passport-github2').Strategy;
 var partials = require('express-partials');
 
 
 var GITHUB_CLIENT_ID = "--insert-github-client-id-here--";
 var GITHUB_CLIENT_SECRET = "--insert-github-client-secret-here--";
+
+
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
 //   serialize users into and deserialize users out of the session.  Typically,
@@ -38,8 +33,8 @@ passport.deserializeUser(function(obj, done) {
 //   credentials (in this case, an accessToken, refreshToken, and GitHub
 //   profile), and invoke a callback with a user object.
 passport.use(new GitHubStrategy({
-    clientID: "2e871d66505d26de2723",
-    clientSecret: "0507cd2eba9b6c22c9b75341e47410c326d3b931",
+    clientID: GITHUB_CLIENT_ID,
+    clientSecret: GITHUB_CLIENT_SECRET,
     callbackURL: "http://127.0.0.1:3000/auth/github/callback"
   },
   function(accessToken, refreshToken, profile, done) {
@@ -54,6 +49,8 @@ passport.use(new GitHubStrategy({
     });
   }
 ));
+
+
 
 
 var app = express();
@@ -113,7 +110,7 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
-//app.listen(3000);
+app.listen(3000);
 
 
 // Simple route middleware to ensure user is authenticated.
@@ -125,35 +122,3 @@ function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login')
 }
-
-
-//
-router.get('/', function (req, res) {
-  res.redirect('/burgers');
-});
-
-router.get('/burgers', function (req, res) {
-  burger.selectAll(function (data) {
-    var hbsObject = { burgers: data };
-    //console.log(hbsObject);
-    res.render('index', hbsObject);
-  });
-});
-
-router.post('/burgers/create', function (req, res) {
-  burger.insertOne(['burger_name', 'devoured'], [req.body.burger_name, req.body.devoured], function () {
-    res.redirect('/burgers');
-  });
-});
-
-router.put('/burgers/update/:id', function (req, res) {
-  var condition = 'id = ' + req.params.id;
-
-  //console.log('devoured', condition);
-
-  burger.updateOne({ devoured: req.body.devoured }, condition, function () {
-    res.redirect('/burgers');
-  });
-});
-
-module.exports = router;
