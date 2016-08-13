@@ -14,7 +14,8 @@ var session = require('express-session');
 var GitHubStrategy = require('passport-github2').Strategy;
 var partials = require('express-partials');
 var app = express();
-
+router.use(passport.initialize());
+router.use(passport.session());
 
 var GITHUB_CLIENT_ID = "2e871d66505d26de2723";
 var GITHUB_CLIENT_SECRET = "0507cd2eba9b6c22c9b75341e47410c326d3b931";
@@ -27,28 +28,31 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
+
 //
 passport.use(new GitHubStrategy({
   clientID: GITHUB_CLIENT_ID,
   clientSecret: GITHUB_CLIENT_SECRET,
-  callbackURL: 'http://localhost:3000/auth/github/callback'
+  callbackURL: 'http://127.0.0.1:3000/auth/github/callback'
 }, function(accessToken, refreshToken, profile, done) {
   process.nextTick(function() {
     return done(null, profile);
   });
 }));
 
-app.get('/auth/github',
+router.get('/auth/github',
   passport.authenticate('github'),
   function(req, res){});
-app.get('/auth/github/callback',
+router.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/' }),
   function(req, res) {
-    res.redirect('/account');
+    console.log("ta da!");
+    res.redirect('/burgers');
   });
 
 
-//
+
+
 router.get('/', function (req, res) {
   res.redirect('/burgers');
 });
